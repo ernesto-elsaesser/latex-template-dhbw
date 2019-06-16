@@ -1,0 +1,46 @@
+\documentclass[oneside,12pt]{report}
+\input{packages}
+\input{config}
+
+\begin{document}
+
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+\includegraphics[width=\textwidth]{header.png}
+\vspace*{3cm}
+\begin{center}
+    \begin{minipage}{.7\textwidth}
+        \centering
+        \textbf{Seminararbeit}\\[2cm]
+        \textit{\LARGE \vartitle}\\[2cm]
+        für das Modul\\[3mm]
+        {\large \varmodule}\\[2cm]
+        am Center for Advanced Studies Heilbronn\\
+        der Dualen Hochschule Baden-Württemberg
+    \end{minipage}
+\end{center}
+\vfill
+\begin{spacing}{1.2}
+    \begin{tabular}{ p{.3\textwidth} l }
+        \textbf{Name}           & Ernesto Elsäßer\\
+        \textbf{Matrikelnummer} & 2016242\\
+        \textbf{Unternehmen}    & moovel Group GmbH, Stuttgart\\
+        \textbf{Kurs}           & \varcourse\\
+        \textbf{Dozenten}       & \varlecturers\\
+        \textbf{Abgabedatum}    & \today{}
+    \end{tabular}
+\end{spacing}
+\end{titlepage}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+\hypersetup{pageanchor=true}
+
+\input{body}
+
+\clearpage
+	
+\end{document}
