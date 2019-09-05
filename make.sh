@@ -8,7 +8,6 @@ export TEXINPUTS="$CONTENTDIR:$TEXINPUTS"
 export BIBINPUTS="$CONTENTDIR:$BIBINPUTS"
 
 cd "$(dirname "$0")"
-WRKDIR=`pwd`
 
 if [ "$2" == "clean" ]; then
     rm -rf out
@@ -23,6 +22,7 @@ if [ "$2" == "clean" ] || [ "$2" == "full" ]; then
     if [ $? -ne 0 ]; then
         exit $?
     fi
+    makeglossaries -s out/$1.ist out/$1 # assumes usage of makeindex, adjust extension if using xindy
     bibtex out/$1
     xelatex -output-directory out $1 > /dev/null
     xelatex -output-directory out $1 > /dev/null
