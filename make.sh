@@ -24,8 +24,8 @@ if [ "$2" == "clean" ] || [ "$2" == "full" ]; then
     fi
     makeglossaries -s out/$1.ist out/$1 # assumes usage of makeindex, adjust extension if using xindy
     bibtex out/$1
-    xelatex -output-directory out $1 > /dev/null
-    xelatex -output-directory out $1 > /dev/null
+    xelatex -halt-on-error -output-directory out $1 > /dev/null # note that this will surpress errors due to bib formatting
+    xelatex -halt-on-error -output-directory out $1 > /dev/null
 fi
 texfot xelatex -output-directory out $1
 
