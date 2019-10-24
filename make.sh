@@ -24,9 +24,14 @@ if [ "$2" == "clean" ] || [ "$2" == "full" ]; then
     fi
     makeglossaries -s out/$1.ist out/$1 # assumes usage of makeindex, adjust extension if using xindy
     bibtex out/$1
-    xelatex -halt-on-error -output-directory out $1 > /dev/null # note that this will surpress errors due to bib formatting
+    echo "Resolving references ..."
+    xelatex -halt-on-error -output-directory out $1 > /dev/null
+    if [ $? -ne 0 ]; then
+        xelatex -halt-on-error -output-directory out $1 # repeat and print output
+        exit $?
+    fi
     xelatex -halt-on-error -output-directory out $1 > /dev/null
 fi
-texfot xelatex -output-directory out $1
+texfot xelatex -halt-on-error -output-directory out $1
 
 cp "out/$1.pdf" "$CONTENTDIR/$1.pdf"
